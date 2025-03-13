@@ -104,15 +104,7 @@ source venv/bin/activate  # Linux/Mac
 # Ou .\venv\Scripts\activate sur Windows
 ```
 
-3. Créez un fichier requirements.txt pour le serveur :
-```
-Flask==2.3.3
-Werkzeug==2.3.7
-flask-cors==4.0.0
-mysql-connector-python==9.0.0
-```
-
-4. Installez les dépendances :
+3. Installez les dépendances :
 ```bash
 pip install -r requirements.txt
 ```
@@ -125,55 +117,9 @@ pip install -r requirements.txt
 mysql -u root -p
 ```
 
-2. Exécutez le script create_database.sql pour créer la base de données et les tables :
+2. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
 ```sql
-SOURCE /chemin/vers/create_database.sql;
-```
-
-Contenu de create_database.sql :
-```sql
--- Créer la base de données
-CREATE DATABASE IF NOT EXISTS network_scanner;
-USE network_scanner;
-
--- Table pour les informations système
-CREATE TABLE system_info (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    hostname VARCHAR(255) NOT NULL,
-    received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Table pour les interfaces réseau (liée à system_info)
-CREATE TABLE network_interfaces (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    system_info_id INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    status VARCHAR(10) NOT NULL, -- up/down
-    address_type VARCHAR(10), -- IPv4/IPv6
-    address VARCHAR(45), -- Supporte IPv4 et IPv6
-    cidr VARCHAR(45), -- Notation CIDR (optionnel)
-    netmask VARCHAR(45), -- Netmask (optionnel)
-    FOREIGN KEY (system_info_id) REFERENCES system_info(id) ON DELETE CASCADE
-);
-
--- Table pour les résultats de scan
-CREATE TABLE scan_results (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    interface_name VARCHAR(255) NOT NULL,
-    ip VARCHAR(45) NOT NULL,
-    hostname VARCHAR(255),
-    status VARCHAR(10) NOT NULL, -- up/down
-    received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Table pour les ports ouverts (liée à scan_results)
-CREATE TABLE open_ports (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    scan_result_id INT NOT NULL,
-    port INT NOT NULL,
-    service VARCHAR(100),
-    FOREIGN KEY (scan_result_id) REFERENCES scan_results(id) ON DELETE CASCADE
-);
+SOURCE /serveur/create_database.sql;
 ```
 
 3. Créez un utilisateur pour l'application :
@@ -184,7 +130,7 @@ FLUSH PRIVILEGES;
 ```
 
 ### Étape 2 : Configurer receiver.py
-Mettez à jour les identifiants dans receiver.py :
+Mettez à jour les identifiants dans receiver.py (Il est déjà modifier de base):
 
 ```python
 db_config = {
@@ -198,6 +144,7 @@ db_config = {
 ## Lancement de l'Application
 
 ### Serveur (Receiver)
+
 Lancez le serveur sur la machine cible :
 ```bash
 python serveur/receiver.py
