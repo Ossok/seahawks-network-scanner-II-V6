@@ -73,7 +73,7 @@ sudo mysql_secure_installation
 ### Client (Seahawks Network Scanner)
 1. Clonez le dépôt :
 ```bash
-git clone https://github.com/Saint-Pedro/seahawk-network-scanner-II
+git clone https://github.com/Ossok/seahawks-network-scanner-II-V6.git
 cd seahawks-network-scanner-II
 ```
 
@@ -98,6 +98,12 @@ Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
 
 ## Configuration de la Base de Données (Serveur)
+
+1. Clonez le dépôt :
+```bash
+git clone https://github.com/Ossok/seahawks-network-scanner-II-V6.git
+cd seahawks-network-scanner-II
+```
 
 ### Étape 1 : Créer la base de données
 1. Connectez-vous à MariaDB :
@@ -134,13 +140,8 @@ db_config = {
 
 
 ### Serveur (Seahawks-nester)
-1. Clonez le dépôt :
-```bash
-git clone https://github.com/Saint-Pedro/seahawk-network-scanner-II
-cd seahawks-network-scanner-II
-```
 
-2. Créez un environnement virtuel :
+1. Créez un environnement virtuel :
 ```bash
 # Windows
 python -m venv venv
@@ -151,14 +152,14 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Installez les dépendances :
+2. Installez les dépendances :
 ```bash
 pip install -r requirements.txt
 ```
 Vérifiez que les bibliothèques Flask, Werkzeug, python-nmap, pytest, flask-cors, psutil, ipaddress, requests,schedule, mysql-connector-python sont incluses.
 
 
-4. Lancez le serveur sur la machine cible :
+3. Lancez le serveur sur la machine cible :
 ```bash
 python serveur/receiver.py
 ```
