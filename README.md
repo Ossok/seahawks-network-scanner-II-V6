@@ -94,6 +94,25 @@ pip install -r requirements.txt
 ```
 Vérifiez que les bibliothèques Flask, Werkzeug, python-nmap, pytest, flask-cors, psutil, ipaddress, requests,schedule, mysql-connector-python sont incluses.
 
+4. Définissez les variables d'environnement Flask :
+```bash
+# Windows
+set FLASK_APP=app
+set FLASK_ENV=development
+
+# Linux/Mac
+export FLASK_APP=app
+export FLASK_ENV=development
+```
+
+5. Lancez l'application :
+```bash
+flask run
+```
+
+6. Accédez à l'application dans votre navigateur : `http://127.0.0.1:5000`
+
+
 Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
 
@@ -134,8 +153,6 @@ db_config = {
     'password': 'toto'
 }
 ```
-
-
 
 
 
