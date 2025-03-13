@@ -94,20 +94,8 @@ pip install -r requirements.txt
 ```
 Vérifiez que les bibliothèques requests, schedule, psutil, et python-nmap sont incluses.
 
-### Serveur (Receiver)
-1. Le fichier receiver.py se trouve dans le dossier "serveur" du projet.
+Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
-2. Créez un environnement virtuel (optionnel mais recommandé) :
-```bash
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# Ou .\venv\Scripts\activate sur Windows
-```
-
-3. Installez les dépendances :
-```bash
-pip install -r requirements.txt
-```
 
 ## Configuration de la Base de Données (Serveur)
 
@@ -141,43 +129,40 @@ db_config = {
 }
 ```
 
-## Lancement de l'Application
 
-### Serveur (Receiver)
 
-Lancez le serveur sur la machine cible :
+
+
+### Serveur (Seahawks-nester)
+1. Clonez le dépôt :
 ```bash
-python serveur/receiver.py
+git clone https://github.com/Saint-Pedro/seahawk-network-scanner-II
+cd seahawks-network-scanner-II
 ```
-Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
-### Client (Seahawks Network Scanner)
-1. Activez l'environnement virtuel (si ce n'est pas déjà fait) :
+2. Créez un environnement virtuel :
 ```bash
 # Windows
+python -m venv venv
 .\venv\Scripts\activate
 
 # Linux/Mac
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-2. Définissez les variables d'environnement Flask :
+3. Installez les dépendances :
 ```bash
-# Windows
-set FLASK_APP=app
-set FLASK_ENV=development
+pip install -r requirements.txt
+```
+Vérifiez que les bibliothèques requests, schedule, psutil, et python-nmap sont incluses.
 
-# Linux/Mac
-export FLASK_APP=app
-export FLASK_ENV=development
+
+4. Lancez le serveur sur la machine cible :
+```bash
+python serveur/receiver.py
 ```
 
-3. Lancez l'application :
-```bash
-flask run
-```
-
-4. Accédez à l'application dans votre navigateur : http://127.0.0.1:5000
 
 ## Utilisation
 
