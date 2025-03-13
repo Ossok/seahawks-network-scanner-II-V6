@@ -92,7 +92,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-Vérifiez que les bibliothèques requests, schedule, psutil, et python-nmap sont incluses.
+Vérifiez que les bibliothèques Flask, Werkzeug, python-nmap, pytest, flask-cors, psutil, ipaddress, requests,schedule, mysql-connector-python sont incluses.
 
 Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
@@ -155,7 +155,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-Vérifiez que les bibliothèques requests, schedule, psutil, et python-nmap sont incluses.
+Vérifiez que les bibliothèques Flask, Werkzeug, python-nmap, pytest, flask-cors, psutil, ipaddress, requests,schedule, mysql-connector-python sont incluses.
 
 
 4. Lancez le serveur sur la machine cible :
