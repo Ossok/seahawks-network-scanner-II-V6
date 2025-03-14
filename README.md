@@ -132,7 +132,7 @@ mysql -u root -p
 
 2. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
 ```sql
-SOURCE /serveur/create_database.sql;
+mysql -u root -p < create_database.sql;
 ```
 
 3. Créez un utilisateur pour l'application :
