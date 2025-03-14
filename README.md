@@ -44,6 +44,10 @@ Un outil de scan réseau développé avec Flask et Python, permettant le scan de
 2. Exécutez l'installateur
 3. Ajoutez Nmap au PATH système (par exemple, `C:\Program Files (x86)\Nmap`)
 
+### Pour le Serveur
+- MariaDB installé sur la machine cible.
+- Python 3.8 ou supérieur pour exécuter receiver.py.
+
 ##### Linux :
 ```bash
 sudo apt-get update
@@ -55,18 +59,6 @@ sudo apt-get install nmap
 sudo apt install python3.12-venv
 ```
 
-### Pour le Serveur
-- MariaDB installé sur la machine cible.
-- Python 3.8 ou supérieur pour exécuter receiver.py.
-
-#### Installation de MariaDB (Serveur)
-```bash
-sudo apt-get update
-sudo apt-get install mariadb-server
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
-sudo mysql_secure_installation
-```
 
 ## Installation
 
@@ -115,27 +107,47 @@ flask run
 
 Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 
+## Configuration serveur
+
+### Linux :
+```bash
+sudo apt-get update
+sudo apt-get install nmap
+```
+
+### Prérequis supplémentaires pour Linux
+```bash
+sudo apt install python3.12-venv
 
 ## Configuration de la Base de Données (Serveur)
 
-1. Clonez le dépôt :
+1.Installation de MariaDB (Serveur)
+```bash
+sudo apt-get update
+sudo apt-get install mariadb-server
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo mysql_secure_installation
+```
+
+2. Clonez le dépôt :
 ```bash
 git clone https://github.com/Ossok/seahawks-network-scanner-II-V6.git
 cd seahawks-network-scanner-II
 ```
 
 ### Étape 1 : Créer la base de données
-1. Connectez-vous à MariaDB :
+3. Connectez-vous à MariaDB :
 ```bash
 mysql -u root -p
 ```
 
-2. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
+4. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
 ```sql
 mysql -u root -p < create_database.sql;
 ```
 
-3. Créez un utilisateur pour l'application :
+5. Créez un utilisateur pour l'application :
 ```sql
 CREATE USER 'toto'@'localhost' IDENTIFIED BY 'toto';
 GRANT ALL PRIVILEGES ON network_scanner.* TO 'toto'@'localhost';
