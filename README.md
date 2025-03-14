@@ -56,7 +56,7 @@ sudo apt-get install nmap
 
 #### Prérequis supplémentaires pour Linux
 ```bash
-sudo apt install python3.12-venv
+sudo apt install python3.11*
 ```
 
 
@@ -117,7 +117,7 @@ sudo apt-get install nmap
 
 ### Prérequis supplémentaires pour Linux
 ```bash
-sudo apt install python3.12-venv
+sudo apt install python3.11*
 
 ## Configuration de la Base de Données (Serveur)
 
@@ -127,7 +127,6 @@ sudo apt-get update
 sudo apt-get install mariadb-server
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
-sudo mysql_secure_installation
 ```
 
 2. Clonez le dépôt :
@@ -137,24 +136,24 @@ cd seahawks-network-scanner-II
 ```
 
 ### Étape 1 : Créer la base de données
-3. Connectez-vous à MariaDB :
+1. Connectez-vous à MariaDB :
 ```bash
-mysql -u root -p
+mysql
 ```
 
-4. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
+2. Exécutez le script create_database.sql (situé dans le dossier "serveur") pour créer la base de données et les tables :
 ```sql
-mysql -u root -p < create_database.sql;
+mysql < create_database.sql;
 ```
 
-5. Créez un utilisateur pour l'application :
+3. Créez un utilisateur pour l'application :
 ```sql
 CREATE USER 'toto'@'localhost' IDENTIFIED BY 'toto';
 GRANT ALL PRIVILEGES ON network_scanner.* TO 'toto'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-### Étape 2 : Configurer receiver.py
+### Étape 2 : Configurer receiver.py (optionnel)
 Mettez à jour les identifiants dans receiver.py (Il est déjà modifier de base):
 
 ```python
