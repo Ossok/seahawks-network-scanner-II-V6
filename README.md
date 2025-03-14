@@ -51,7 +51,7 @@ Un outil de scan réseau développé avec Flask et Python, permettant le scan de
 ##### Linux :
 ```bash
 sudo apt-get update
-sudo apt-get install nmap
+sudo apt-get install nmap git
 ```
 
 #### Prérequis supplémentaires pour Linux
@@ -112,7 +112,7 @@ Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
 ### Linux :
 ```bash
 sudo apt-get update
-sudo apt-get install nmap
+sudo apt-get install nmap git
 ```
 
 ### Prérequis supplémentaires pour Linux
