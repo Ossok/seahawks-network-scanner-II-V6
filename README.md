@@ -105,7 +105,7 @@ flask run
 6. Accédez à l'application dans votre navigateur : `http://127.0.0.1:5000`
 
 
-Le serveur écoute par défaut sur http://<machine-ip>:5001/receive.
+Le serveur écoute par défaut sur http://machine-ip:5001/receive.
 
 ## Configuration serveur
 
